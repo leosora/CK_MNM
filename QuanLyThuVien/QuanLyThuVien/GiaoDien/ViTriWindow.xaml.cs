@@ -65,7 +65,7 @@ namespace QuanLyThuVien.GiaoDien
             return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
         }
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
-        {
+        {   // Button Them
             if (rdoThem.IsChecked == true)
             {
                 KE k = dc.KEs.Find(txtmavitri.Text);
@@ -105,7 +105,9 @@ namespace QuanLyThuVien.GiaoDien
                     dc.SaveChanges();
                     hienthi();
                 }
+
             }
+            //Button Sua
             else if (rdoSua.IsChecked == true)
             {
                 string make = txtmavitri.Text;
@@ -142,6 +144,7 @@ namespace QuanLyThuVien.GiaoDien
                 }
                 hienthi();
             }
+            //Button Xoa
             else if (rdoXoa.IsChecked == true)
             {
                 if (dgViTri.SelectedItem == null) return;
