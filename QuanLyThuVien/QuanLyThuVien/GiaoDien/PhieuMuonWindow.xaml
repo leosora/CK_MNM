@@ -1,0 +1,164 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.PhieuMuonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="PhieuMuonWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        >
+    <StackPanel>
+        <Label Content="Lập phiếu mượn" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
+        <GroupBox Header="Thông tin phiếu mượn">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Ngày mượn"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Ngày trả dự kiến"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Trạng thái"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Tiền phạt tổng"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Đã trả"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Mã Tài khoản thu thư"/>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thẻ độc giả"/>
+                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon" IsEnabled="False"/>
+                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien" IsEnabled="False"/>
+                <WrapPanel Grid.Column="1" Grid.Row="3">
+                    <RadioButton Name="rdbduocmuon" Content="Được mượn" />
+                    <RadioButton Name="rdbkhongduocmuon" Content="Không được mượn"  IsChecked="True"/>
+                </WrapPanel>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" IsReadOnly="True"/>
+                <WrapPanel Grid.Column="1" Grid.Row="5" IsEnabled="False">
+                    <RadioButton  Name="rdbdatra" Content="Đã trả"/>
+                    <RadioButton  Name="rdbchuatra" Content="Chưa trả" IsChecked="True"/>
+                </WrapPanel>
+                <TextBox Grid.Column="1" Grid.Row="6" Name="txtmataikhoan"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="txtthedocgia" />
+                <Button Grid.Column="2" Grid.Row="1" Name="btnLapPM" Content="Lập phiếu mượn" Click="BtnLapPM_Click" Height="21" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Chi Tiết Phiếu Mượn">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Tên Sách"/>
+                    <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="Tên Sách"/>-->
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Tác giả"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Năm Xuất Bản"/>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Text="Tình trạng"/>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Số lượng sách mượn"/>
+                    <Button Grid.Row="1" Grid.Column="5" Content="Chọn sách" Name="btnchon" Click="Btnchon_Click"/>
+                    <ComboBox Grid.Row="1" Grid.Column="0" Name="cmbMasach" SelectedValuePath="MaSach" DisplayMemberPath="TenSach"/>
+                    <!--<TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TenSach}"/>-->
+                    <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TacGia}"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.NamXuatBan}"/>
+                    <ComboBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" Name="cmbtinhtrang">
+                        <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh" IsSelected="True"/>
+                        <ComboBoxItem Name="cmbbihunhe" Content="Bị hư hại nhẹ"/>
+                    </ComboBox>
+                    <!--<TextBox Grid.Row="1" Grid.Column="4" Name="txttinhtrang" />-->
+                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtSoluongsachmuon" Text="1" IsEnabled="False"/>
+
+                </Grid>
+                <DataGrid Name="dgChitiet" AutoGenerateColumns="False" SelectedValuePath="MaSach">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                        <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                        <DataGridTextColumn Header="Tác giả" Binding="{Binding TacGia}"/>
+                        <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
+                        <DataGridTextColumn Header="Tình Trạng" Binding="{Binding TinhTrang}"/>
+                        <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Xóa" Name="btnXoa" Click="BtnXoa_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!--<Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="51*"/>
+                        <ColumnDefinition Width="209*"/>
+                        <ColumnDefinition Width="260*"/>
+                        <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition Width="238*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Thành tiền hóa đơn"/>
+                    <TextBox Grid.Column="3" Grid.Row="0" Name="txtThanhtien" IsReadOnly="True" Grid.ColumnSpan="2"/>
+                </Grid>-->
+
+            </StackPanel>
+        </GroupBox>
+        <!--<GroupBox Header="Danh sách phiếu mượn">
+            <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
+                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon}"/>
+                    <DataGridTextColumn Header="Ngày trả dự kiến" Binding="{Binding NgayTraDukien}"/>
+                    <DataGridCheckBoxColumn Header="Trạng thái" Binding="{Binding TrangThai}"/>
+                    <DataGridTextColumn Header="Tiền phạt tổng" Binding="{Binding TienPhatTong}"/>
+                    <DataGridCheckBoxColumn Header="Đã trả" Binding="{Binding DaTra}"/>
+                    <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                    <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding PHIEUMUON.TAIKHOANTHUTHU.TenTaiKhoai}"/>
+                    <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding MaTheDocGia}"/>
+                    <DataGridTextColumn Header="Tên độc giả" Binding="{Binding PHIEUMUON.THEDOCGIA.TenDocGia}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Expander>
+                            <StackPanel>
+                                <DataGrid Name="dgCTPM" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                                        <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                                        <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
+                                        <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
+                                        <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
+                                        <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
+                                        <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat}"/>
+                                        <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Expander>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+
+            </DataGrid>
+        </GroupBox>-->
+    </StackPanel>
+</Window>

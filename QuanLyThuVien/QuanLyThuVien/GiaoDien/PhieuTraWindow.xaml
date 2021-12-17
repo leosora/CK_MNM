@@ -1,0 +1,107 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.PhieuTraWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="PhieuTraWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        >
+    <StackPanel Margin="0,0,0,-2">
+        <Label Content="Quản lý phiếu trả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
+        <GroupBox Header="Thông tin phiếu trả">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Ngày mượn"/>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Ngày trả dự kiện"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Trạng thái"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Tiền phạt tổng"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Mã thủ thư"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã độc giả"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã Phiếu mượn"/>
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Đã trả"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" IsEnabled="False" Name="cmbMaThuThu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" IsEnabled="False" Name="cmbMaDocGia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
+                <DatePicker Grid.Column="1" Grid.Row="6" IsEnabled="False" Name="dpNgayMuon" Height="24" VerticalAlignment="Top"/>
+                <DatePicker Grid.Column="1" Grid.Row="7" IsEnabled="False" Name="dpNgayTra"/>
+                <ComboBox Grid.Column="1" Grid.Row="3" Name="cmbtrangthai" IsEnabled="False" SelectedItem="TrangThai">
+                    <ComboBoxItem Name="cmbduocmuon" Content="Được mượn"  />
+                    <ComboBoxItem Name="cmbkhongduocmuon" Content="Không được mượn"/>
+                </ComboBox>
+                <CheckBox Name="ckbdatra" Grid.Column="1" Grid.Row="8" IsEnabled="False"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" IsReadOnly="True" Text="0"/>
+                
+                <WrapPanel Grid.Column="2" Grid.Row="1">
+                    <TextBlock Text="Tên thủ thư: "/>
+                    <TextBlock Text="{Binding ElementName=cmbMaThuThu,Path=SelectedItem.TenTaiKhoai}"/>
+                </WrapPanel>
+                <WrapPanel Grid.Column="2" Grid.Row="2">
+                    <TextBlock Text="Tên độc giả: "/>
+                    <TextBlock Text="{Binding ElementName=cmbMaDocGia,Path=SelectedItem.TenDocGia}"/>
+                </WrapPanel>
+                <WrapPanel Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center">
+                    <CheckBox Name="ckbchopheptra" Content="Cho phép trả" Click="Ckbchopheptra_Click"/>
+                </WrapPanel>
+                <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon" IsReadOnly="True"/>
+            </Grid>
+        </GroupBox>
+        <Button Grid.Column="0" Grid.Row="0" Name="btnlapphieutra" Content="Thông tin chi tiết của phiếu mượn" Visibility="Visible" Click="Btnlapphieutra_Click"/>
+        <Button Grid.Column="0" Grid.Row="0" Name="btnxacnhan" Content="Xác nhận đã trả" Visibility="Collapsed" Click="Btnxacnhan_Click"/>
+   
+        
+        <GroupBox Header="Danh sách phiếu trả">
+            <DataGrid Name="dgphieutra" IsReadOnly="True" AutoGenerateColumns="False" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged" Margin="0,0,0,-150">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
+                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>
+                    <DataGridTextColumn Header="Ngày trả dự kiến" Binding="{Binding NgayTraDukien ,StringFormat='dd/MM/yyyy'}"/>
+                    <DataGridCheckBoxColumn Header="Trạng thái" Binding="{Binding TrangThai}"/>
+                    <DataGridTextColumn Header="Tiền phạt tổng" Binding="{Binding TienPhatTong ,StringFormat='{}{0:#,##0.## đ}'}"/>
+                    <DataGridCheckBoxColumn Header="Đã trả" Binding="{Binding DaTra}"/>
+                    <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                    <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.TenTaiKhoai}"/>
+                    <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding MaTheDocGia}"/>
+                    <DataGridTextColumn Header="Tên độc giả" Binding="{Binding THEDOCGIA.TenDocGia}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Expander>
+                            <StackPanel>
+                                <DataGrid Name="dgCTPT" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                                        <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                                        <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
+                                        <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
+                                        <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
+                                        <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat ,StringFormat='dd/MM/yyyy'}"/>
+                                        <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat ,StringFormat='{}{0:#,##0.## đ}'}"/>
+                                        <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Expander>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+        </GroupBox>
+    </StackPanel>
+</Window>

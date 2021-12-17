@@ -1,0 +1,34 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="Đăng nhập" Height="190" Width="250"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+        >
+    <StackPanel>
+        <Label Content="Hệ thống đăng nhập" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <TextBlock Text="Tài khoản" Width="200"/>
+        <TextBox Name="txttaikhoan" Width="200"/>
+        <TextBlock Text="Mật khẩu" Width="200"/>
+        <PasswordBox Name="txtmatkhau" Width="200"/>
+        <Label/>
+        <WrapPanel HorizontalAlignment="Center">
+            <RadioButton Content="Thủ thư" Name="ckbthuthu"/>
+                <Label/>
+            <RadioButton Content="Độc giả" Name="ckbdocgia"/>
+        </WrapPanel>
+        <Label/>
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
+            <Label/>
+            <Label/>
+            <Button Name="btntrolai" Content="Trở lại" Click="Btntrolai_Click" />
+        </WrapPanel>
+        
+    </StackPanel>
+</Window>

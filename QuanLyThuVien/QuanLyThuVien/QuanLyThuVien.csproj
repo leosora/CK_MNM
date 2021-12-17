@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F22EAFBB-ED74-4CA8-BA26-E5EBDA28A115}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLyThuVien</RootNamespace>
+    <AssemblyName>QuanLyThuVien</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="CHITIETPHIEUMUON.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCGIA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\CapNhatTheDocGiaWindow.xaml.cs">
+      <DependentUpon>CapNhatTheDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\DanhSachPhieuMuonDocGiaWindow.xaml.cs">
+      <DependentUpon>DanhSachPhieuMuonDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\DanhsachphieumuonthuthuWindow.xaml.cs">
+      <DependentUpon>DanhsachphieumuonthuthuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\DanhSachTaiKhoanDocGiaWindow.xaml.cs">
+      <DependentUpon>DanhSachTaiKhoanDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\DanhsachtaikhoanthuthuWindow.xaml.cs">
+      <DependentUpon>DanhsachtaikhoanthuthuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\HeThongTimKiemWindow.xaml.cs">
+      <DependentUpon>HeThongTimKiemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\KhuWindow.xaml.cs">
+      <DependentUpon>KhuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\LichsutraWindow.xaml.cs">
+      <DependentUpon>LichsutraWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\LichSuWindow.xaml.cs">
+      <DependentUpon>LichSuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\PhieuMuonDocGiaWindow.xaml.cs">
+      <DependentUpon>PhieuMuonDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\PhieuMuonWindow.xaml.cs">
+      <DependentUpon>PhieuMuonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\PhieuTraWindow.xaml.cs">
+      <DependentUpon>PhieuTraWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\SuachitietphieumuonWindow.xaml.cs">
+      <DependentUpon>SuachitietphieumuonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\SuadocgiathuthuWindow.xaml.cs">
+      <DependentUpon>SuadocgiathuthuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\SuathongtincanhanthuthuWindow.xaml.cs">
+      <DependentUpon>SuathongtincanhanthuthuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\suathongtincanhanWindow.xaml.cs">
+      <DependentUpon>suathongtincanhanWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\Suathuthuadmin.xaml.cs">
+      <DependentUpon>Suathuthuadmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\TaiKhoanDocGiaWindow.xaml.cs">
+      <DependentUpon>TaiKhoanDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\TaiKhoanThuThuWindow.xaml.cs">
+      <DependentUpon>TaiKhoanThuThuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\TheDocGiaWindow.xaml.cs">
+      <DependentUpon>TheDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHAXUATBAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHIEUMUON.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SACH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAIKHOANDOCGIA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAIKHOANTHUTHU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THEDOCGIA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THELOAI.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THUTHU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Page Include="GiaoDien\CapNhatTheDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhSachPhieuMuonDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhsachphieumuonthuthuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhSachPhieuMuonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhSachTaiKhoanDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhsachtaikhoanthuthuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\HeThongTimKiemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\KhuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\LichsutraWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\LichSuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\NhaXuatBanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\PhieuMuonDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\PhieuMuonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\PhieuTraWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\SachWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\SuachitietphieumuonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\SuadocgiathuthuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\SuathongtincanhanthuthuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\suathongtincanhanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\Suathuthuadmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\TaiKhoanDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\TaiKhoanThuThuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\TheDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\TheLoaiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\ThuThuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\ViTriWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GiaoDien\DanhSachPhieuMuonWindow.xaml.cs">
+      <DependentUpon>DanhSachPhieuMuonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\DocGiaWindow.xaml.cs">
+      <DependentUpon>DocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\NhaXuatBanWindow.xaml.cs">
+      <DependentUpon>NhaXuatBanWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\SachWindow.xaml.cs">
+      <DependentUpon>SachWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\TheLoaiWindow.xaml.cs">
+      <DependentUpon>TheLoaiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\ThuThuWindow.xaml.cs">
+      <DependentUpon>ThuThuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\ViTriWindow.xaml.cs">
+      <DependentUpon>ViTriWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Hinhanh\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="shut.png" />
+    <Resource Include="iconslogout.png" />
+    <Resource Include="back.png" />
+    <Resource Include="usericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
