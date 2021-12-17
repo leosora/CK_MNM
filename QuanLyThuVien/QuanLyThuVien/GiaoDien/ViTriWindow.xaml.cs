@@ -27,7 +27,7 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
-            
+
             cmbmakhu.ItemsSource = dc.KHUs.ToList();
             dgViTri.ItemsSource = dc.KEs.ToList();
         }
@@ -75,7 +75,7 @@ namespace QuanLyThuVien.GiaoDien
                     return;
                 }
                 Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
-                txttenke.Text = trimmer.Replace(txttenke.Text, " ");               
+                txttenke.Text = trimmer.Replace(txttenke.Text, " ");
                 if (HasSpecialChars(txtmavitri.Text) == true)
                 {
                     MessageBox.Show("Mã không được có kí tự đặc biệt hoặc khoảng trắng");
@@ -94,7 +94,7 @@ namespace QuanLyThuVien.GiaoDien
                     MessageBox.Show("Tên chưa điền");
                     txttenke.Focus();
                     return;
-                }             
+                }
                 else
                 {
                     KE kE = new KE();
