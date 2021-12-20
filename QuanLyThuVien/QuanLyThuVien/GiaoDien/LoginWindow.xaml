@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         ResizeMode="NoResize"
-        Background="Brown"
+        Background="Green"
         >
     <StackPanel>
         <Label Content="Hệ thống đăng nhập" FontWeight="Bold" HorizontalContentAlignment="Center"/>
