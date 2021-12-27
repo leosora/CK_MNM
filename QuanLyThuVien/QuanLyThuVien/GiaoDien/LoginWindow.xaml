@@ -9,7 +9,11 @@
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         ResizeMode="NoResize"
+<<<<<<< HEAD
         Background="LightBlue"
+=======
+        Background="Orange"
+>>>>>>> 8b92ac04578f63a5221807dd1a3ccbb1f258c445
         >
     <StackPanel>
         <Label Content="Hệ thống đăng nhập" FontWeight="Bold" HorizontalContentAlignment="Center"/>
